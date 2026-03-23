@@ -1176,13 +1176,13 @@ body.on-login .site-footer{display:none;}
   </div>
   <!-- Right: Horizontal bar + trend line -->
   <div style="display:flex;flex-direction:column;gap:20px;">
-    <div class="panel" style="padding: 24px; flex:1;">
+    <div class="panel" style="padding: 24px;">
       <div class="panel-header" style="padding:0 0 16px 0;"><div class="panel-title">Overall Completion</div></div>
-      <canvas id="chart-bar-overall" height="160"></canvas>
+      <div style="position:relative;height:180px;"><canvas id="chart-bar-overall"></canvas></div>
     </div>
-    <div class="panel" style="padding: 24px; flex:1;">
+    <div class="panel" style="padding: 24px;">
       <div class="panel-header" style="padding:0 0 16px 0;"><div class="panel-title">Cases This Month</div></div>
-      <canvas id="chart-trend" height="100"></canvas>
+      <div style="position:relative;height:140px;"><canvas id="chart-trend"></canvas></div>
     </div>
   </div>
 </div>
