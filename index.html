@@ -663,6 +663,30 @@ body.on-login .site-footer{display:none;}
 .deadline-date{font-size:12px;color:var(--text-3);font-variant-numeric:tabular-nums;}
 .deadline-date.urgent{color:var(--ac-orange);}
 
+/* ONBOARDING */
+.onb-wrapper{width:100%;max-width:480px;margin:0 auto;}
+.onb-progress{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:16px;}
+.onb-progress-track{flex:1;height:3px;background:var(--border-hi);border-radius:2px;overflow:hidden;}
+.onb-progress-fill{height:100%;background:var(--ac-orange);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1);}
+.onb-progress-label{font-size:12px;color:var(--text-3);flex-shrink:0;font-variant-numeric:tabular-nums;}
+.onb-card{background:var(--bg-raised);border:1px solid var(--border);border-radius:16px;padding:40px 36px 36px;box-shadow:var(--shadow-lg);}
+.onb-step-title{font-family:'Lora',serif;font-size:24px;font-weight:500;color:var(--text-1);margin-bottom:8px;letter-spacing:-.4px;}
+.onb-step-sub{font-size:14px;font-weight:300;color:var(--text-2);line-height:1.55;margin-bottom:28px;}
+.onb-nav{display:flex;align-items:center;justify-content:space-between;margin-top:24px;}
+.onb-back{font-size:13px;color:var(--text-3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;transition:color .14s;}
+.onb-back:hover{color:var(--text-1);}
+.onb-continue{flex:1;margin-left:16px;padding:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;color:#fff;background:var(--ac-orange);border:none;border-radius:10px;cursor:pointer;transition:opacity .15s;}
+.onb-continue:hover{opacity:.88;}
+.onb-continue:disabled{opacity:.4;cursor:not-allowed;}
+.onb-skip-link{display:block;text-align:center;font-size:13px;color:var(--text-3);margin-top:14px;cursor:pointer;transition:color .14s;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%;}
+.onb-skip-link:hover{color:var(--text-2);}
+.orcid-badge{display:flex;align-items:center;gap:10px;background:var(--accent-dim);border:1px solid var(--border-hi);border-radius:10px;padding:14px 16px;margin-bottom:20px;}
+.orcid-logo{width:36px;height:36px;border-radius:50%;background:#A6CE39;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:white;font-family:'DM Sans',sans-serif;}
+.orcid-badge-text{font-size:13px;color:var(--text-2);line-height:1.45;}
+.onb-pd-expand{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ac-blue);cursor:pointer;padding:0;margin:16px 0 4px;display:flex;align-items:center;gap:5px;}
+.onb-pd-fields{display:none;margin-top:12px;}
+.onb-pd-fields.open{display:block;}
+
 </style>
 <!-- SECTION:styles END -->
 </head>
@@ -1880,6 +1904,11 @@ body.on-login .site-footer{display:none;}
 <!-- SECTION:page:login START -->
 <div class="page" id="page-login"><div class="login-page-wrap"><div class="login-wrapper"><div class="hospital-badge"><div class="hospital-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1M9 13h1M9 17h1"/></svg></div><span class="hospital-name-badge">St. Michael's Hospital</span></div><div class="login-card"><div class="login-form-inner" id="login-form"><h1 class="login-title">Sign in</h1><p class="login-sub">Enter your hospital email and we'll send you a magic link — no password needed.</p><div class="login-field"><label class="field-label" for="login-email">Email address</label><input class="login-field-input" id="login-email" type="email" placeholder="you@stmichaels.org" autocomplete="email"/><span class="login-hint">Use the email associated with your hospital account.</span><span class="login-error" id="login-email-error"></span></div><button class="login-btn" id="login-submit-btn" onclick="handleLoginSubmit()"><span class="login-btn-text">Send magic link</span><div class="login-spinner"></div></button><div class="login-divider"><div class="login-divider-line"></div><span class="login-divider-text">Or</span><div class="login-divider-line"></div></div><div class="login-footer"><p class="login-footer-text">Don't have an account? Contact your <a class="login-footer-link" href="#">hospital admin</a> to get access.</p></div></div><div class="confirm-view" id="confirm-view"><div class="confirm-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></div><h2 class="confirm-title">Check your email</h2><p class="confirm-sub">We sent a magic link to</p><p class="confirm-email" id="confirm-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4831273d083b3c25212b20292d243b66273a2f">[email&#160;protected]</a></p><p class="confirm-note">Click the link in the email to sign in. The link expires in 15 minutes.</p><button class="btn-ghost" onclick="backToLoginForm()">Use a different email</button><div class="resend-row"><button class="resend-btn" id="resend-btn" disabled onclick="handleResend()">Resend link</button><span class="resend-timer" id="resend-timer">0:30</span></div></div></div></div></div></div>
 <!-- SECTION:page:login END -->
+
+<!-- ===== ONBOARDING PAGE ===== -->
+<div class="page" id="page-onboarding"></div>
+<!-- SECTION:page:onboarding END -->
+
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <!-- SECTION:scripts START -->
 <script>
@@ -2100,6 +2129,7 @@ else if(page==='rotation'){
 else if(page==='fellowship'){document.getElementById('page-fellowship').classList.add('active');document.getElementById('sb-fellowship').style.display='';document.getElementById('nav-analytics').classList.add('active')}
 else if(page==='heatmap'){document.getElementById('page-heatmap').classList.add('active');document.getElementById('sb-heatmap').style.display='';document.getElementById('nav-analytics').classList.add('active')}
 else if(page==='login'){document.getElementById('page-login').classList.add('active');document.getElementById('login-form').classList.remove('hidden');document.getElementById('confirm-view').classList.remove('active');if(resendTimerInterval)clearInterval(resendTimerInterval);setTimeout(()=>{const e=document.getElementById('login-email');if(e)e.focus()},100)}
+else if(page==='onboarding'){document.getElementById('page-onboarding').classList.add('active');document.body.classList.add('on-login');document.getElementById('app-layout').style.display='none';document.getElementById('nav-login-btn').style.display='none';document.getElementById('nav-avatar').style.display='none';onbGoTo(1);}
 window.scrollTo(0,0)}
 function validateEmail(e){if(!e.trim())return'Please enter your email address.';if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))return'Please enter a valid email address.';const d=e.split('@')[1]?.toLowerCase();if(!ALLOWED_DOMAINS.includes(d))return"This email domain isn't associated with St. Michael's Hospital.";return null}
 function handleLoginSubmit(){const i=document.getElementById('login-email'),er=document.getElementById('login-email-error'),b=document.getElementById('login-submit-btn'),e=i.value.trim();i.classList.remove('has-error');er.classList.remove('visible');const m=validateEmail(e);if(m){i.classList.add('has-error');er.textContent=m;er.classList.add('visible');return}b.classList.add('loading');b.disabled=true;setTimeout(()=>{b.classList.remove('loading');b.disabled=false;submittedEmail=e;document.getElementById('login-form').classList.add('hidden');document.getElementById('confirm-view').classList.add('active');document.getElementById('confirm-email').textContent=e;startResendTimer();showToast('Magic link sent')},1500)}
@@ -2109,7 +2139,7 @@ function backToLoginForm(){document.getElementById('login-form').classList.remov
 document.getElementById('login-email').addEventListener('keydown',e=>{if(e.key==='Enter')handleLoginSubmit()});
 document.getElementById('login-email').addEventListener('input',()=>{document.getElementById('login-email').classList.remove('has-error');document.getElementById('login-email-error').classList.remove('visible')});
 document.getElementById('nav-login-btn').addEventListener('click',()=>{if(isLoggedIn){isLoggedIn=false;navigate('login');showToast('Logged out')}else{navigate('login')}});
-document.getElementById('confirm-view').addEventListener('dblclick',()=>{isLoggedIn=true;navigate('home');showToast('Signed in as '+submittedEmail)});
+document.getElementById('confirm-view').addEventListener('dblclick',()=>{isLoggedIn=true;navigate('onboarding');showToast('Email verified — let\'s set up your profile');});
 function submitCase(){const p=document.getElementById('f-proc').value.trim(),r=document.getElementById('f-role').value,c=document.getElementById('f-cat').value,d=document.getElementById('f-date').value;if(!p||!r){showToast('Please fill in required fields');return}totalCases++;if(roleCounts[r]!==undefined)roleCounts[r]++;
 document.getElementById('donut-num').textContent=totalCases;document.getElementById('case-count-label').textContent=totalCases+' logged';document.getElementById('m-pgy3').textContent=Math.min(totalCases,250);document.getElementById('m-pgy3-bar').style.width=Math.min(totalCases/250*100,100).toFixed(1)+'%';document.getElementById('m-month').textContent=parseInt(document.getElementById('m-month').textContent)+1;
 document.getElementById('rl-sc').textContent=roleCounts.SC;document.getElementById('rl-sj').textContent=roleCounts.SJ;document.getElementById('rl-ta').textContent=roleCounts.TA;document.getElementById('rl-fa').textContent=roleCounts.FA;
@@ -2444,7 +2474,169 @@ function buildDeadlineSection() {
   }).join('');
 }
 
-document.addEventListener('DOMContentLoaded',function(){buildACGMEBars();buildDeadlines();navigate('rotation');const lb=document.getElementById('nav-login-btn');lb.textContent=isLoggedIn?'Logout':'Login';document.getElementById('nav-avatar').style.display=isLoggedIn?'':'none'});
+// ── ONBOARDING STATE ──────────────────────────────────────────────────────
+let onbStep = 1;
+const onbTotalSteps = 5;
+let userProfile = {
+  name:'',phone:'',role:'Resident',pgy:'1',gradYear:'2028',
+  service:'General Surgery',rotationStart:'',rotationEnd:'',
+  fellowship:'HPB Surgery',fellowshipSecondary:'',
+  orcid:'',pdName:'',pdEmail:'',onboardingComplete:false
+};
+
+function onbGoTo(step){
+  for(let i=1;i<=onbTotalSteps;i++){const el=document.getElementById('onb-step-'+i);if(el)el.style.display='none';}
+  const target=document.getElementById('onb-step-'+step);if(target)target.style.display='block';
+  onbStep=step;
+  const pct=(step/onbTotalSteps)*100;
+  const fill=document.getElementById('onb-progress-fill');
+  const label=document.getElementById('onb-progress-label');
+  if(fill)fill.style.width=pct+'%';
+  if(label)label.textContent='Step '+step+' of '+onbTotalSteps;
+}
+function onbNext(){if(onbStep<onbTotalSteps)onbGoTo(onbStep+1);else completeOnboarding();}
+function onbBack(){if(onbStep>1)onbGoTo(onbStep-1);}
+
+function completeOnboarding(){
+  userProfile.name=document.getElementById('onb-name')?.value.trim()||'Resident';
+  userProfile.phone=document.getElementById('onb-phone')?.value.trim()||'';
+  userProfile.role=document.getElementById('onb-role')?.value||'Resident';
+  userProfile.pgy=document.getElementById('onb-pgy')?.value||'1';
+  userProfile.gradYear=document.getElementById('onb-grad-year')?.value||'2028';
+  userProfile.service=document.getElementById('onb-service')?.value||'General Surgery';
+  userProfile.rotationStart=document.getElementById('onb-rotation-start')?.value||'';
+  userProfile.rotationEnd=document.getElementById('onb-rotation-end')?.value||'';
+  userProfile.fellowship=document.getElementById('onb-fellowship')?.value||'Not sure yet';
+  userProfile.fellowshipSecondary=document.getElementById('onb-fellowship-secondary')?.value||'';
+  userProfile.orcid=document.getElementById('onb-orcid')?.value.trim()||'';
+  userProfile.pdName=document.getElementById('onb-pd-name')?.value.trim()||'';
+  userProfile.pdEmail=document.getElementById('onb-pd-email')?.value.trim()||'';
+  userProfile.onboardingComplete=true;
+  applyUserProfile();
+  showToast('Welcome, '+userProfile.name.split(' ')[0]+'!');
+  navigate('home');
+}
+
+function applyUserProfile(){
+  if(!userProfile.onboardingComplete)return;
+  const firstName=userProfile.name.split(' ')[0]||'Resident';
+  // Avatar initials
+  const avatar=document.getElementById('nav-avatar');
+  if(avatar&&userProfile.name){
+    const parts=userProfile.name.trim().split(' ');
+    avatar.textContent=parts.length>=2?parts[0][0].toUpperCase()+parts[parts.length-1][0].toUpperCase():parts[0].slice(0,2).toUpperCase();
+  }
+  // Case log eyebrow
+  const clEyebrow=document.querySelector('#page-caselogs .page-eyebrow');
+  if(clEyebrow)clEyebrow.textContent=userProfile.service+' Residency · PGY-'+userProfile.pgy;
+  // Service switcher label
+  const serviceLabel=document.getElementById('service-label');
+  if(serviceLabel)serviceLabel.textContent=userProfile.service;
+  // Rotation page header
+  const rotH1=document.querySelector('#page-rotation h1');
+  if(rotH1)rotH1.textContent=userProfile.service+' Rotation';
+  // Rotation sidebar dates
+  const sbRotStart=document.getElementById('sb-rot-start');
+  const sbRotEnd=document.getElementById('sb-rot-end');
+  if(sbRotStart&&userProfile.rotationStart){
+    const fmt=d=>new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    sbRotStart.textContent='Start: '+fmt(userProfile.rotationStart);
+    sbRotEnd.textContent='End: '+fmt(userProfile.rotationEnd);
+  }
+  // Sidebar fellowship goal
+  const sbFellowship=document.getElementById('sb-fellowship-goal');
+  if(sbFellowship)sbFellowship.textContent=userProfile.fellowship;
+  // Sidebar rotation select
+  const sbRotSelect=document.querySelector('#sb-rotation select');
+  if(sbRotSelect)sbRotSelect.value=userProfile.service;
+  // Reload feeds
+  if(typeof loadBTKFeed==='function')setTimeout(loadBTKFeed,100);
+}
+
+function togglePDFields(){
+  const fields=document.getElementById('onb-pd-fields');
+  const btn=document.getElementById('onb-pd-toggle');
+  if(!fields)return;
+  fields.classList.toggle('open');
+  if(btn)btn.textContent=fields.classList.contains('open')?'▾ Hide program director':'+ Add your program director (optional)';
+}
+
+function buildOnboardingPage(){
+  const today=new Date().toISOString().slice(0,10);
+  const endDate=new Date();endDate.setDate(endDate.getDate()+56);
+  const defaultEnd=endDate.toISOString().slice(0,10);
+  const el=document.getElementById('page-onboarding');
+  if(!el)return;
+  el.innerHTML=`
+<div class="login-page-wrap"><div class="onb-wrapper">
+  <div class="onb-progress">
+    <div class="onb-progress-track"><div class="onb-progress-fill" id="onb-progress-fill" style="width:20%"></div></div>
+    <span class="onb-progress-label" id="onb-progress-label">Step 1 of 5</span>
+  </div>
+  <div class="onb-card">
+
+    <!-- STEP 1: Basic Info -->
+    <div id="onb-step-1" class="onb-step">
+      <h2 class="onb-step-title">Tell us about yourself</h2>
+      <p class="onb-step-sub">This personalises your dashboard and EPA notifications.</p>
+      <div class="field"><label class="field-label">Full name <span class="req">*</span></label><input type="text" id="onb-name" placeholder="Dr. Jane Smith" autocomplete="name"/></div>
+      <div class="field"><label class="field-label">Phone number <span class="req">*</span></label><input type="tel" id="onb-phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/><span class="login-hint">Used for EPA feedback SMS notifications from attendings.</span></div>
+      <div class="field"><label class="field-label">Role <span class="req">*</span></label><select id="onb-role"><option value="Resident">Resident</option><option value="Fellow">Fellow</option><option value="Attending">Attending</option><option value="GME Coordinator">GME Coordinator</option></select></div>
+      <div class="onb-nav"><button class="onb-continue" onclick="onbNext()">Continue →</button></div>
+    </div>
+
+    <!-- STEP 2: Training Level -->
+    <div id="onb-step-2" class="onb-step" style="display:none">
+      <h2 class="onb-step-title">Your training level</h2>
+      <p class="onb-step-sub">Sets your ACGME requirements and case log targets.</p>
+      <div class="form-grid-2">
+        <div class="field"><label class="field-label">PGY Year <span class="req">*</span></label><select id="onb-pgy"><option value="1">PGY-1</option><option value="2">PGY-2</option><option value="3">PGY-3</option><option value="4">PGY-4</option><option value="5">PGY-5</option></select></div>
+        <div class="field"><label class="field-label">Expected graduation <span class="req">*</span></label><select id="onb-grad-year"><option value="2026">2026</option><option value="2027">2027</option><option value="2028" selected>2028</option><option value="2029">2029</option><option value="2030">2030</option></select></div>
+      </div>
+      <div class="onb-nav"><button class="onb-back" onclick="onbBack()">← Back</button><button class="onb-continue" onclick="onbNext()">Continue →</button></div>
+    </div>
+
+    <!-- STEP 3: Rotation -->
+    <div id="onb-step-3" class="onb-step" style="display:none">
+      <h2 class="onb-step-title">Your current rotation</h2>
+      <p class="onb-step-sub">GuideFlow shows relevant guidelines, podcasts, and on-call info for your service.</p>
+      <div class="field"><label class="field-label">Current service <span class="req">*</span></label><select id="onb-service"><option value="General Surgery">General Surgery</option><option value="Trauma Surgery">Trauma Surgery</option><option value="Vascular Surgery">Vascular Surgery</option><option value="Colorectal">Colorectal</option><option value="Hepatobiliary">Hepatobiliary</option><option value="Breast Surgery">Breast Surgery</option><option value="Endocrine Surgery">Endocrine Surgery</option><option value="Thoracic Surgery">Thoracic Surgery</option><option value="Pediatric Surgery">Pediatric Surgery</option><option value="Surgical Critical Care">Surgical Critical Care</option></select></div>
+      <div class="form-grid-2">
+        <div class="field"><label class="field-label">Start date <span class="req">*</span></label><input type="date" id="onb-rotation-start" value="${today}"/></div>
+        <div class="field"><label class="field-label">End date <span class="req">*</span></label><input type="date" id="onb-rotation-end" value="${defaultEnd}"/><span class="login-hint">Typically 4–8 weeks from start.</span></div>
+      </div>
+      <div class="onb-nav"><button class="onb-back" onclick="onbBack()">← Back</button><button class="onb-continue" onclick="onbNext()">Continue →</button></div>
+    </div>
+
+    <!-- STEP 4: Fellowship -->
+    <div id="onb-step-4" class="onb-step" style="display:none">
+      <h2 class="onb-step-title">Your fellowship goal</h2>
+      <p class="onb-step-sub">We benchmark your cases and research against matched applicants for your target fellowship.</p>
+      <div class="field"><label class="field-label">Primary interest <span class="req">*</span></label><select id="onb-fellowship"><option value="Not sure yet">Not sure yet</option><option value="Colorectal Surgery (CRS)">Colorectal Surgery (CRS)</option><option value="HPB Surgery" selected>Hepatobiliary (HPB)</option><option value="Minimally Invasive / Bariatric (MIS)">Minimally Invasive / Bariatric (MIS)</option><option value="Surgical Oncology">Surgical Oncology</option><option value="Vascular Surgery">Vascular Surgery</option><option value="Thoracic Surgery">Thoracic Surgery</option><option value="Breast Surgery">Breast Surgery</option><option value="Pediatric Surgery">Pediatric Surgery</option><option value="Surgical Critical Care">Surgical Critical Care</option><option value="Transplant Surgery">Transplant Surgery</option></select></div>
+      <div class="field"><label class="field-label">Secondary interest <span style="color:var(--text-3);font-weight:400">(optional)</span></label><select id="onb-fellowship-secondary"><option value="">None</option><option value="Colorectal Surgery (CRS)">Colorectal Surgery (CRS)</option><option value="HPB Surgery">Hepatobiliary (HPB)</option><option value="Minimally Invasive / Bariatric (MIS)">Minimally Invasive / Bariatric (MIS)</option><option value="Surgical Oncology">Surgical Oncology</option><option value="Vascular Surgery">Vascular Surgery</option><option value="Thoracic Surgery">Thoracic Surgery</option><option value="Breast Surgery">Breast Surgery</option><option value="Pediatric Surgery">Pediatric Surgery</option><option value="Surgical Critical Care">Surgical Critical Care</option><option value="Transplant Surgery">Transplant Surgery</option></select></div>
+      <div class="onb-nav"><button class="onb-back" onclick="onbBack()">← Back</button><button class="onb-continue" onclick="onbNext()">Continue →</button></div>
+    </div>
+
+    <!-- STEP 5: Research + PD -->
+    <div id="onb-step-5" class="onb-step" style="display:none">
+      <h2 class="onb-step-title">Research profile</h2>
+      <p class="onb-step-sub">Optional — connect your ORCID to track publications toward your fellowship goal.</p>
+      <div class="orcid-badge"><div class="orcid-logo">iD</div><span class="orcid-badge-text">ORCID is the standard researcher ID used by journals and funding agencies. Connecting it takes 30 seconds.</span></div>
+      <div class="field"><label class="field-label">ORCID iD</label><input type="text" id="onb-orcid" placeholder="0000-0000-0000-0000" autocomplete="off"/><span class="login-hint">Format: XXXX-XXXX-XXXX-XXXX &nbsp;·&nbsp; <a href="https://orcid.org/register" target="_blank" rel="noopener" style="color:var(--ac-blue);text-decoration:none">Register free at orcid.org →</a></span></div>
+      <button class="onb-pd-expand" id="onb-pd-toggle" onclick="togglePDFields()">+ Add your program director (optional)</button>
+      <div class="onb-pd-fields" id="onb-pd-fields">
+        <div class="field"><label class="field-label">Program Director name</label><input type="text" id="onb-pd-name" placeholder="Dr. Program Director"/></div>
+        <div class="field"><label class="field-label">Program Director email</label><input type="email" id="onb-pd-email" placeholder="pd@hospital.org"/><span class="login-hint">Receives your rotation debrief at end of each rotation.</span></div>
+      </div>
+      <div class="onb-nav" style="margin-top:28px"><button class="onb-back" onclick="onbBack()">← Back</button><button class="onb-continue" onclick="completeOnboarding()" style="background:var(--ac-orange)">Get started →</button></div>
+      <button class="onb-skip-link" onclick="completeOnboarding()">Skip for now</button>
+    </div>
+
+  </div>
+</div></div>`;
+}
+
+document.addEventListener('DOMContentLoaded',function(){buildACGMEBars();buildDeadlines();buildOnboardingPage();navigate('rotation');const lb=document.getElementById('nav-login-btn');lb.textContent=isLoggedIn?'Logout':'Login';document.getElementById('nav-avatar').style.display=isLoggedIn?'':'none';setTimeout(function(){loadBTKFeed();buildDeadlineSection();},200);});
 function handleAddContact(btn){btn.disabled=true;btn.textContent='Adding...';setTimeout(function(){btn.disabled=false;btn.textContent='Add Contact';showToast('Contact added')},800)}
 (function(){var si=document.querySelector('.search-input');if(!si)return;si.addEventListener('input',function(){var q=si.value.trim().toLowerCase();var listRows=document.querySelectorAll('#list-view .list-row');var gridCards=document.querySelectorAll('#grid-view .guide-card');var matchCount=0;listRows.forEach(function(r){var name=r.querySelector('.list-name');var show=!q||name.textContent.toLowerCase().includes(q);r.style.display=show?'':'none';if(show)matchCount++});gridCards.forEach(function(c){var title=c.querySelector('.guide-title');var show=!q||title.textContent.toLowerCase().includes(q);c.style.display=show?'':'none'});var lv=document.getElementById('list-view');var gv=document.getElementById('grid-view');var existingEmpty=document.querySelectorAll('.empty-search');existingEmpty.forEach(function(e){e.remove()});if(q&&matchCount===0){var msg=document.createElement('div');msg.className='empty-search';msg.textContent='No guidelines found for "'+si.value.trim()+'"';lv.appendChild(msg.cloneNode(true));gv.appendChild(msg)}})})();
 // Keyboard support for role="button" elements and sidebar toggles
