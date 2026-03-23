@@ -1182,7 +1182,7 @@ body.on-login .site-footer{display:none;}
     </div>
     <div class="panel" style="padding: 24px;">
       <div class="panel-header" style="padding:0 0 16px 0;"><div class="panel-title">Cases This Month</div></div>
-      <div style="position:relative;height:140px;"><canvas id="chart-trend"></canvas></div>
+      <div style="position:relative;height:140px;"><canvas id="chart-rot-trend"></canvas></div>
     </div>
   </div>
 </div>
@@ -1922,7 +1922,7 @@ function buildRotationCharts(){
   const barCtx=document.getElementById('chart-bar-overall');
   if(barCtx){new Chart(barCtx,{type:'bar',data:{labels:['Abdominal','Alimentary','Laparoscopic','Hernia','Endoscopy','Vascular'],datasets:[{label:'Logged',data:[34,28,30,18,12,8],backgroundColor:'#E8A87C',borderRadius:4,barPercentage:0.6},{label:'Required',data:[250,180,100,85,50,30],backgroundColor:bgTrack,borderRadius:4,barPercentage:0.6}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{stacked:false,grid:{color:gridColor,drawBorder:false},ticks:{color:textColor,font:{size:10}}},y:{grid:{display:false},ticks:{color:textColor,font:{size:11}}}},plugins:{legend:{display:true,position:'bottom',labels:{color:textColor,font:{size:10},boxWidth:10,padding:12}}}}});}
   // Trend line
-  const trendCtx=document.getElementById('chart-trend');
+  const trendCtx=document.getElementById('chart-rot-trend');
   if(trendCtx){new Chart(trendCtx,{type:'line',data:{labels:['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8'],datasets:[{label:'Cases logged',data:[3,5,8,6,10,9,12,14],borderColor:'#E8A87C',backgroundColor:'rgba(232,168,124,0.1)',fill:true,tension:0.4,borderWidth:2,pointRadius:3,pointBackgroundColor:'#E8A87C'}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{grid:{color:gridColor,drawBorder:false},ticks:{color:textColor,font:{size:10}}},y:{grid:{color:gridColor,drawBorder:false},ticks:{color:textColor,font:{size:10}},beginAtZero:true}},plugins:{legend:{display:false}}}});}
 }
 function buildACGMEBars(){const c=document.getElementById('acgme-bars');c.innerHTML='';
